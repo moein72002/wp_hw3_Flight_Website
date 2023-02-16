@@ -40,7 +40,7 @@ type Register struct {
 
 func main() {
 	var err error
-	db, err = sql.Open("postgres", "user=postgres password=alierfan dbname=postgres sslmode=disable")
+	db, err = sql.Open("postgres", "host=auth-postgres port=5432 user=postgres dbname=postgres password=alierfan sslmode=disable")
 	if err != nil {
 		log.Fatalf("Error connecting to the database: %v", err)
 	}

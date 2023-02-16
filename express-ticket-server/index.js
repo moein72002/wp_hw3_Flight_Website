@@ -47,7 +47,7 @@ const respondNotEnoughCapacity = function () {
 
 app.post("/purchase", async (req, res) => {
     // check token
-    const axiosResponse = await axios.get('http://localhost:3000/isTokenValid', {
+    const axiosResponse = await axios.get('http://auth-server:3000/isTokenValid', {
         headers: {
             "Authorization": req.headers.authorization
         }
@@ -82,8 +82,8 @@ app.post("/purchase", async (req, res) => {
             var bodyFormData = new FormData();
             bodyFormData.append('amount', req.body.offer_price);
             bodyFormData.append('receipt_id', title);
-            bodyFormData.append('callback', "http://localhost:3001/payment/" + title);
-            transactionIdResponse = await axios.post('http://127.0.0.1:8000/transaction/', bodyFormData)
+            bodyFormData.append('callback', "http://ticket-server:3001/payment/" + title);
+            transactionIdResponse = await axios.post('http://bank:8000/transaction/', bodyFormData)
         } catch (error) {
             console.log(error);
         }
@@ -121,7 +121,7 @@ app.get("/payment/:title/:result", async (req, res) => {
 });
 
 app.post("/user-tickets", async (req, res) => {
-    const axiosResponse = await axios.get('http://localhost:3000/isTokenValid', {
+    const axiosResponse = await axios.get('http://auth-server:3000/isTokenValid', {
         headers: {
             "Authorization": req.headers.authorization
         }

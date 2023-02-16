@@ -55,7 +55,7 @@ func PassMap(pass []byte) string {
 }
 
 func ConnectDB() *gorm.DB {
-	db, err := gorm.Open("postgres", "host=127.0.0.1 port=5432 user=postgres dbname=postgres password=alierfan sslmode=disable")
+	db, err := gorm.Open("postgres", "host=auth-postgres port=5432 user=postgres dbname=postgres password=alierfan sslmode=disable")
 	HandleErr(err)
 	return db
 }

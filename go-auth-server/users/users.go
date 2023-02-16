@@ -18,7 +18,7 @@ import (
 
 var exptime = 3600
 var client *redis.Client = redis.NewClient(&redis.Options{
-	Addr:     "localhost:6379",
+	Addr:     "webbackend-redis:6379",
 	Password: "",
 	DB:       0,
 })
