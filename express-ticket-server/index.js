@@ -82,7 +82,7 @@ app.post("/purchase", async (req, res) => {
             var bodyFormData = new FormData();
             bodyFormData.append('amount', req.body.offer_price);
             bodyFormData.append('receipt_id', title);
-            bodyFormData.append('callback', "http://ticket-server:3001/payment/" + title);
+            bodyFormData.append('callback', "http://localhost:9050/ticket/payment/" + title);
             transactionIdResponse = await axios.post('http://bank:8000/transaction/', bodyFormData)
         } catch (error) {
             console.log(error);
@@ -103,7 +103,7 @@ app.post("/purchase", async (req, res) => {
         res.status(200).json({
             data: {
                 "message": 'transaction created successfully with transaction id: ' +
-                    transactionId + ' please go to bank payment with address localhost:8000/payment/' + transactionId
+                    transactionId + ' please go to bank payment with address http://localhost:9050/bank/payment/' + transactionId
             }
         });
     }
